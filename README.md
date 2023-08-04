@@ -123,7 +123,9 @@ docker kill $(docker ps -q)
 
 The $() portion of that will evaluate whatever is inside of that first and plug its output into the second command. In this case, docker ps -q returns all the IDs and nothing else. These are then passed to docker kill which will kill all those IDs. Neat!
 
-# Download Node.js image
+### Download Node.js image
+
+---
 
 ```shell 
 # Using this command you will be redirected to node.js runtime
@@ -135,6 +137,18 @@ docker run -it node:12-strect bash
 
 # To verify the OS version and distribution
 docker run node:12-stretch cat /etc/issue
+```
+
+# Docker Tags
+
+Remember, this quote is specially for you that work directly with remote servers.
+
+PAY ATENTION THE VERSION.
+
+Docker Tags is used to select the version of the an image. So, pay atention in the version of your image to run the application.
+
+```
+docker run -it <image:version>
 ```
 
 # Reference
