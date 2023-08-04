@@ -123,6 +123,20 @@ docker kill $(docker ps -q)
 
 The $() portion of that will evaluate whatever is inside of that first and plug its output into the second command. In this case, docker ps -q returns all the IDs and nothing else. These are then passed to docker kill which will kill all those IDs. Neat!
 
+# Download Node.js image
+
+```shell 
+# Using this command you will be redirected to node.js runtime
+# only javascript "commands" will work there
+docker run -it node:12-stretch
+
+# If you want to be dropped inside linux, use this command below
+docker run -it node:12-strect bash
+
+# To verify the OS version and distribution
+docker run node:12-stretch cat /etc/issue
+```
+
 # Reference
 
 [repository](https://github.com/btholt/projects-for-complete-intro-to-containers.git)
