@@ -55,7 +55,7 @@ Keep in your mind, using namespaces to restrict capabilities of containers to in
 
 Following the same example above, there are so many users using the server and we need to limit the process to garantee that won't shut down by usage.
 
-So, the cgroups works directly with the hardware, where you can limit the CPU, Memory, Disk and, MORE IMPORTANTLY, that a single container cannot bring the system dwon by exhausting one of those resources.
+So, the cgroups works directly with the hardware, where you can limit the CPU, Memory, Disk and, MORE IMPORTANTLY, that a single container cannot bring the system down by exhausting one of those resources.
 
 Obviously, Docker was developed to control everything by itself. If you need to configure namespace and cgroups with your own hands it can took a while, so docker control it to reduce the time and focus on what really matters.
 
@@ -127,7 +127,7 @@ The $() portion of that will evaluate whatever is inside of that first and plug 
 
 ---
 
-```shell 
+```shell
 # Using this command you will be redirected to node.js runtime
 # only javascript "commands" will work there
 docker run -it node:12-stretch
@@ -150,6 +150,16 @@ Docker Tags is used to select the version of the an image. So, pay atention in t
 ```
 docker run -it <image:version>
 ```
+
+# Dockerfile
+
+How to build your first container? There are other ways to do this. Docker has a special file called as Dockerfile which allows you to outline how a container will be built.
+
+Dockerfile can build images automatically by reading the instructions from a Dockerfile. You can pass commands as arguments and then build your container to follow this instructions.
+
+For example:
+
+Go to [nodejs section](./intro-containers/build-a-nodejs-app/)
 
 # Reference
 
