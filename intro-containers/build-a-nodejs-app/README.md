@@ -27,3 +27,31 @@ docker run <name:version>
 
 Building your container with a name and version, when you run docker image ls it will display the name and version that
 you defined before.
+
+# Running the NODE.JS container
+
+Ok, now you created your image with Dockerfile and started to run.
+
+Our application is creating a server where points to localhost:3000
+
+If we try to access this route, we will get a error.
+
+## WHY?
+
+Let's comeback to namespaces, we are not sharing the network with host network.
+So, everything that is outside of our container will be unable to acess this network.
+We did not give the explicit permission to this container to talk to the host network.
+
+## How do we solve it?
+
+You need to "publish" the route.
+
+- First: add EXPOSE 3000 inside Dockerfile, before CMD field
+- Second: You need to put -p 3000:3000 in your docker run command, like this:
+
+
+```shell
+docker run -p 3000:3000 <name:version> 
+```
+
+Following this command with -p tag you will be able to acess the localhost
