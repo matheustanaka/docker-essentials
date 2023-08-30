@@ -1,5 +1,11 @@
 FROM node:12-stretch 
 
-COPY index.js index.js
+USER node
+
+WORKDIR /home/node/code
+
+COPY --chown=node:node index.js
+
+EXPOSE 3000
 
 CMD ["node", "index.js"]

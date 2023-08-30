@@ -55,3 +55,32 @@ docker run -p 3000:3000 <name:version>
 ```
 
 Following this command with -p tag you will be able to acess the localhost
+
+# Dockerfile tags
+
+As you can see, we need to declare what we will do in Dockerfile. 
+
+I will explain the tags below:
+
+```shell
+# Define the base image for your Docker container.
+FROM node:12-stretch 
+
+# Sets the user that the following commands and CMD at the end will be run as. 
+# Remember, always create a user, if dont put USER tag the container will run as root user.
+USER node
+
+# This sets the working directory, it's equivalent to running 'cd /home/node/code'
+WORKDIR /home/node/code
+
+# This copies the index.js file from your current directory on your host machine to the current directory in the container.
+# The --chown=node:node sets the owner of the index.js file to the node user.
+COPY --chown=node:node index.js
+
+# Define the port
+EXPOSE 3000
+
+# Sets the default command to run when the container starts. it will run:
+# node index.js
+CMD ["node", "index.js"]
+```
