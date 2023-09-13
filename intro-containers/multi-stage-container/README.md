@@ -101,3 +101,5 @@ Sua imagem final será menor, pois você não está incluindo todas as ferrament
 Uma imagem menor resulta em tempos de implantação mais rápidos, menos espaço em disco usado, e potencialmente menos superfície de ataque do ponto de vista de segurança.
 
 Então, para responder sua pergunta: Sim, geralmente ao usar o multi-stage, você acabará com uma imagem menor porque separou as fases de build e runtime, enquanto com um único estágio, você pode acabar com uma imagem significativamente maior contendo ferramentas e dependências desnecessárias para a execução de sua aplicação.
+
+# GPT LINE [GPT](https://chat.openai.com/c/b7cf8ef6-e0d0-466b-b728-10fd0c5b3ebe)
