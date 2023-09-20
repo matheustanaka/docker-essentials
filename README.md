@@ -161,6 +161,12 @@ For example:
 
 Go to [nodejs section](./intro-containers/build-a-nodejs-app/)
 
+# Bind Mounts, Volumes and Network
+
+This session will cover about this topics above.
+
+Go to [Features in Docker Section](./intro-containers/features-docker/)
+
 # Reference
 
 [repository](https://github.com/btholt/projects-for-complete-intro-to-containers.git)
