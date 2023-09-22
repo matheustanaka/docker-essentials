@@ -126,4 +126,89 @@ docker network inspect app-net
 ]
 ```
 
+# Adding a Node.js project to test it 
+
+We can also add one more container to this connection. 
+
+- First we need to setup a server with Express.js and Install mongo dependecies.
+
+- Then, we will be able to connect this server with the database just sharing the url of mongodb using the default port 27017.
+
+- Create the [Dockerfile](./Dockerfile)
+
+Pay attention, we need to start the mongodb container before to start the node.js app. Go to the top side to start these containers.
+
+```shell 
+# Building the dockerfile 
+docker build --tag=my-app-with-mongo .
+
+# Running the container with the app-net defined 
+docker run -p 3000:3000 --network=app-net --env MONGO_CONNECTION_STRING=mongodb://db:27017 my-app-with-mongo
+```
+
+As you can see, our containers are connected and working together.
+
+You can also access the url [localhost](http://localhost:3000/) and go to the /add page. Then, press F5 for three times. Go back to the / page and you will the counter with the result "3" because you refresh the page 3 times.
+
+```shell 
+repos/docker-essentials/intro-containers on  main ?!
+❯ docker network inspect app-net
+
+[
+    {
+        "Name": "app-net",
+        "Id": "18b0497debe454815f80cfc56f90cb5f30a2bbd539dd3c383b8c327080b3fa5e",
+        "Created": "2023-09-21T22:04:12.682236215Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "085d4969cfb26cd19e9519ab29a992001bd77aced5af8e38c98d8e83883233a4": {
+                "Name": "thirsty_bardeen",
+                "EndpointID": "6675d8196569e3426d0db24b2ef3b1128470206c460b4e0127a91e0be4b7b0a5",
+                "MacAddress": "02:42:ac:12:00:02",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            },
+            "086d73e04b743d333b17e6df9d17bad8d1d2b20909878d239b97ef291fa62a6d": {
+                "Name": "db",
+                "EndpointID": "16340a3c166bc7c5233c8b8b6f213a01825caecd62da1270b7fc8968719a8821",
+                "MacAddress": "02:42:ac:12:00:03",
+                "IPv4Address": "172.18.0.3/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {},
+        "Labels": {}
+    }
+]
+
+repos/docker-essentials/intro-containers on  main ?!
+❯ docker ps
+CONTAINER ID   IMAGE               COMMAND                  CREATED         STATUS         PORTS                                           NAMES
+086d73e04b74   mongo:3             "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   0.0.0.0:27017->27017/tcp, :::27017->27017/tcp   db
+085d4969cfb2   my-app-with-mongo   "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   0.0.0.0:3000->3000/tcp, :::3000->3000/tcp       thirsty_bardeen
+```
+
+
+
+
+
 
