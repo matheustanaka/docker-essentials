@@ -94,3 +94,7 @@ docker-compose up --build
 ```
 
 With this command you will rebuild the image.
+
+# Kubernetes
+
+Kubernetes section can be found [here](./kubernetes-lessons/README.md)
