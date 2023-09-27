@@ -31,9 +31,24 @@ kubectl apply -f db-deployment.yaml -f db-service.yaml -f web-deployment.yaml -f
 
 It will create our pods and services. 
 
+Check if it's everything working.
+
+```shell 
+kubectl get all
+```
+
+it should return with the pod status 1/1, which means that is running. If return 0 is not working.
+Also, check the image status if there's no problem when you pull the image from docker hub.
+
+If you prefer, use minikube dashboard.
+
+```shell 
+minikube dashboard
+```
+
 You should be able to access the app in your localhost:3000.
 
-By the way, localhost:3000 won't work for me. I don't know exactly the reasons but I have to configure a tunnel with minikube.
+By the way, localhost:3000 didn't work for me. I don't know exactly the reasons, but I have to configure a tunnel with minikube.
 
 - tunnel configurtion
 
@@ -56,3 +71,4 @@ kubectl get svc
 # The port 3000 was defined inside our docker-compose.
 http://EXTERNAL_IP:3000
 ```
+**Useful [link](https://minikube.sigs.k8s.io/docs/handbook/accessing/#loadbalancer-access) to configure tunnel** 
