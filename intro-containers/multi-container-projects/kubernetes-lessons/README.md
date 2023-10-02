@@ -1,7 +1,14 @@
 # Kubernetes Lessons
 
 # What's Kubernetes? 
-# Why should I use Kubernetes? 
+
+Is a container orchestrator plataform that abstracts (reduce the complexity) infrastructure complexity, prodives network, storage, scalabillity and hight availability features (it can distribute application components across multiple nodes), and helps you manage and scale containerized applications efficiently. It's a key technology in modern application development and deployment.
+
+# When should I use Kubernetes? 
+
+It's recommended to use Kubernetes when you have a complex applications with multiple components, services and microservices. It excels (excelente em portugues) at managing the orchestration and scaling of these components.
+
+
 # How it works? 
 
 
